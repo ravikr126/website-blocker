@@ -8,6 +8,7 @@ document.getElementById("addSite").addEventListener("click", () => {
             blockedSites.push(siteInput);
             chrome.storage.sync.set({ blockedSites }, () => {
                 displayBlockedSites();
+                updateBlockedRules();
             });
         }
     });
@@ -40,7 +41,7 @@ function removeSite(site) {
 
         chrome.storage.sync.set({ blockedSites }, () => {
             displayBlockedSites();
-            updateBlockedRules(); // Update the blocking rules after removal
+            updateBlockedRules();
         });
     });
 }
